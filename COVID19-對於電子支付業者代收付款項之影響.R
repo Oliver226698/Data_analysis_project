@@ -1,7 +1,7 @@
 #install.packages("plm")
 #install.packages("rio")
 
-##¬İ¬ÛÃö«Y¼ÆÅãµÛ©Êªºpackage
+##çœ‹ç›¸é—œä¿‚æ•¸é¡¯è‘—æ€§çš„package
 #install.packages("Hmisc")
 
 library(tidyverse)
@@ -17,22 +17,22 @@ library(rio)
 data_2019 = list()
 
 for( n in c(1:9)){
-  data_2019[[n]] <- read_excel(str_c("C:/Users/Oliver/Desktop/ªÀ·|¦w¥ş¨î«×/final/1080", n,"_¹q¤l¤ä¥I¾÷ºc­«­n¸ê°T´¦ÅS",".xlsx"), 
+  data_2019[[n]] <- read_excel(str_c("C:/Users/Oliver/Desktop/ç¤¾æœƒå®‰å…¨åˆ¶åº¦/final/1080", n,"_é›»å­æ”¯ä»˜æ©Ÿæ§‹é‡è¦è³‡è¨Šæ­éœ²",".xlsx"), 
                                skip = 4, col_types = c("text","numeric","numeric","numeric","numeric","numeric"),
                                col_names = c("Name", "People", "transaction_thousand", "1", "2", "3")) %>%
   na.omit %>%
   select(1:3) %>%
-  subset(!(Name %in% c("Á`­p", "·Rª÷¥dªÑ¥÷¦³­­¤½¥q", "±y¹C¥dªÑ¥÷¦³­­¤½¥q"))) %>%
+  subset(!(Name %in% c("ç¸½è¨ˆ", "æ„›é‡‘å¡è‚¡ä»½æœ‰é™å…¬å¸", "æ‚ éŠå¡è‚¡ä»½æœ‰é™å…¬å¸"))) %>%
   mutate(month = str_c("108m0", n))
 }
 
 for(n in c(10:12)){
-  data_2019[[n]] <- read_excel(str_c("C:/Users/Oliver/Desktop/ªÀ·|¦w¥ş¨î«×/final/108", n,"_¹q¤l¤ä¥I¾÷ºc­«­n¸ê°T´¦ÅS",".xlsx"), 
+  data_2019[[n]] <- read_excel(str_c("C:/Users/Oliver/Desktop/ç¤¾æœƒå®‰å…¨åˆ¶åº¦/final/108", n,"_é›»å­æ”¯ä»˜æ©Ÿæ§‹é‡è¦è³‡è¨Šæ­éœ²",".xlsx"), 
                                skip = 4, col_types = c("text","numeric","numeric","numeric","numeric","numeric"),
                                col_names = c("Name", "People", "transaction_thousand", "1", "2", "3")) %>%
     na.omit %>%
     select(1:3) %>%
-    subset(!(Name %in% c("Á`­p", "·Rª÷¥dªÑ¥÷¦³­­¤½¥q", "±y¹C¥dªÑ¥÷¦³­­¤½¥q"))) %>%
+    subset(!(Name %in% c("ç¸½è¨ˆ", "æ„›é‡‘å¡è‚¡ä»½æœ‰é™å…¬å¸", "æ‚ éŠå¡è‚¡ä»½æœ‰é™å…¬å¸"))) %>%
     mutate(month = str_c("108m", n))
 }
 
@@ -40,7 +40,7 @@ data_2019.m <- bind_rows(data_2019[1:12]) %>%
   mutate(transaction = transaction_thousand *1000,
          ln_transaction = log(transaction))%>%
   select(-transaction_thousand)
-data_2019.m$Name <- gsub("\\s","",data_2019.m$Name) ##¨ú¥N±¼ª÷¿Ä¾÷ºc¦WºÙ¤¤ªºªÅ¥Õ
+data_2019.m$Name <- gsub("\\s","",data_2019.m$Name) ##å–ä»£æ‰é‡‘èæ©Ÿæ§‹åç¨±ä¸­çš„ç©ºç™½
 
 View(data_2019.m)
 
@@ -50,21 +50,21 @@ View(data_2019.m)
 data = list()
 
 for( n in c(1:9)){
-  data[[n]] <- read_excel(str_c("C:/Users/Oliver/Desktop/ªÀ·|¦w¥ş¨î«×/final/1090", n,"_¹q¤l¤ä¥I¾÷ºc­«­n¸ê°T´¦ÅS",".xlsx"), 
+  data[[n]] <- read_excel(str_c("C:/Users/Oliver/Desktop/ç¤¾æœƒå®‰å…¨åˆ¶åº¦/final/1090", n,"_é›»å­æ”¯ä»˜æ©Ÿæ§‹é‡è¦è³‡è¨Šæ­éœ²",".xlsx"), 
              skip = 2, col_types = c("text","numeric","numeric","numeric","numeric","numeric"),
              col_names = c("Name", "People", "transaction_thousand", "1", "2", "3")) %>% 
     na.omit() %>%
     select(1:3) %>%
-    subset(!(Name %in% c("Á`­p", "·Rª÷¥dªÑ¥÷¦³­­¤½¥q", "±y¹C¥dªÑ¥÷¦³­­¤½¥q"))) %>%
+    subset(!(Name %in% c("ç¸½è¨ˆ", "æ„›é‡‘å¡è‚¡ä»½æœ‰é™å…¬å¸", "æ‚ éŠå¡è‚¡ä»½æœ‰é™å…¬å¸"))) %>%
     mutate(month = str_c("109m0", n))
 }
 
-data_10 <- read_excel("C:/Users/Oliver/Desktop/ªÀ·|¦w¥ş¨î«×/final/10910_¹q¤l¤ä¥I¾÷ºc­«­n¸ê°T´¦ÅS.xlsx", 
+data_10 <- read_excel("C:/Users/Oliver/Desktop/ç¤¾æœƒå®‰å…¨åˆ¶åº¦/final/10910_é›»å­æ”¯ä»˜æ©Ÿæ§‹é‡è¦è³‡è¨Šæ­éœ².xlsx", 
                    skip = 2, col_types = c("text","numeric","numeric","numeric","numeric","numeric"),
                    col_names = c("Name", "People", "transaction_thousand", "1", "2", "3")) %>%
   na.omit%>%
   select(1:3) %>%
-  subset(!(Name %in% c("Á`­p", "·Rª÷¥dªÑ¥÷¦³­­¤½¥q", "±y¹C¥dªÑ¥÷¦³­­¤½¥q"))) %>%
+  subset(!(Name %in% c("ç¸½è¨ˆ", "æ„›é‡‘å¡è‚¡ä»½æœ‰é™å…¬å¸", "æ‚ éŠå¡è‚¡ä»½æœ‰é™å…¬å¸"))) %>%
   mutate(month = str_c("109m10"))
 #View(data_10)
 
@@ -73,17 +73,17 @@ data_2020.m <- bind_rows(data[1:9], data_10) %>%
   mutate( transaction = transaction_thousand *1000,
          ln_transaction = log(transaction)) %>%
           select(-transaction_thousand)
-data_2020.m$Name <- gsub("\\s","",data_2020.m$Name) ##¨ú¥N±¼ª÷¿Ä¾÷ºc¦WºÙ¤¤ªºªÅ¥Õ
+data_2020.m$Name <- gsub("\\s","",data_2020.m$Name) ##å–ä»£æ‰é‡‘èæ©Ÿæ§‹åç¨±ä¸­çš„ç©ºç™½
 
 data.m <- bind_rows(data_2019.m , data_2020.m)
 View(data.m)
 
-# Import the growth of online users (OK, ¤U­±¨Ö)
-online_users <- read_excel("C:/Users/Oliver/Desktop/ªÀ·|¦w¥ş¨î«×/final/¦æ°Ê¼eÀW¥Î¤á²b¼W¥[¼Æ.xlsx") %>%
+# Import the growth of online users (OK, ä¸‹é¢ä½µ)
+online_users <- read_excel("C:/Users/Oliver/Desktop/ç¤¾æœƒå®‰å…¨åˆ¶åº¦/final/è¡Œå‹•å¯¬é »ç”¨æˆ¶æ·¨å¢åŠ æ•¸.xlsx") %>%
   filter(month != "108m1")
 
 
-# Calculate the growth of users (OK, ¤U­±¨Ö)
+# Calculate the growth of users (OK, ä¸‹é¢ä½µ)
 data_growth <- group_by(data.m, Name) %>%
   mutate(growth_user = People - dplyr::lag(People, default = People[1])) %>%
   subset(month != "108m01") %>%
@@ -91,7 +91,7 @@ data_growth <- group_by(data.m, Name) %>%
 
 View(data_growth)
 
-# Calculate ¨C®aª÷±±¨C¤ëªº¥N¦¬¥Iª÷ÃB¥e¤ñ (±Ä¥Î bind_cols ¤§«á¦^ÀY¦AÅçÃÒ)
+# Calculate æ¯å®¶é‡‘æ§æ¯æœˆçš„ä»£æ”¶ä»˜é‡‘é¡å æ¯” (æ¡ç”¨ bind_cols ä¹‹å¾Œå›é ­å†é©—è­‰)
 last_percent_money <- data.m %>%
   group_by(month) %>%
   summarise(last_percent_m = transaction / sum(transaction) * 100,
@@ -101,7 +101,7 @@ last_percent_money <- data.m %>%
 
 View(last_percent_money)
 
-## ÅçÃÒ¥«¥e¨S­pºâ¿ù»~
+## é©—è­‰å¸‚å æ²’è¨ˆç®—éŒ¯èª¤
 "last_percent_money_test <- data.m %>%
   group_by(month) %>%
   summarise(last_percent_m = transaction / sum(transaction) * 100,
@@ -115,11 +115,11 @@ data.c <- subset(data.m, month != "109m10") %>%
   select(Name ,People) %>%
   rename(last_people = People)
   
-data.c$Name <- gsub("\\s","",data.c$Name) ##¨ú¥N±¼ª÷¿Ä¾÷ºc¦WºÙ¤¤ªºªÅ¥Õ
+data.c$Name <- gsub("\\s","",data.c$Name) ##å–ä»£æ‰é‡‘èæ©Ÿæ§‹åç¨±ä¸­çš„ç©ºç™½
 
 View(data.c)
 
-#¥ı­ç°£ data.m ¤¤ 10801 ªº¸ê®Æ, ¦A¦X¨Ö¤W­Ó¤ë¨Ï¥Î¤H¼Æ & ¤W­Ó¤ëªº¥«¥e²v
+#å…ˆå‰”é™¤ data.m ä¸­ 10801 çš„è³‡æ–™, å†åˆä½µä¸Šå€‹æœˆä½¿ç”¨äººæ•¸ & ä¸Šå€‹æœˆçš„å¸‚å ç‡
 data.m <- filter(data.m, data.m$month != "108m01")
 data.mm <- bind_cols(data.m, last_percent_money, data.c, data_growth)
 data.mmm <- data.mm %>% 
@@ -129,7 +129,7 @@ data.mmm <- data.mm %>%
   
 View(data.mmm)
 
-#¦X¨Ö¸ê®Æ & ±N ln_transaction µLªk¥¿±`Åãªº­È­×¥¿±¼ & ¤W¤@´Áªº¥N¦¬¥I¤ñ¨ÒÆ[¹îlog ¬O§_¥X²{©Ç©Çªº
+#åˆä½µè³‡æ–™ & å°‡ ln_transaction ç„¡æ³•æ­£å¸¸é¡¯çš„å€¼ä¿®æ­£æ‰ & ä¸Šä¸€æœŸçš„ä»£æ”¶ä»˜æ¯”ä¾‹è§€å¯Ÿlog æ˜¯å¦å‡ºç¾æ€ªæ€ªçš„
 
 data.mmmm <- left_join(data.mmm, online_users, by = c("month" = "month"))
 data.mmmm$ln_transaction[is.infinite(data.mmmm$ln_transaction)] <- 0
@@ -140,13 +140,13 @@ data.mmmm <- data.mmmm %>%
 
 View(data.mmmm)
 
-##²£¥Í¤K¤j¤½ªÑ¦æ®wµêÀÀÅÜ¼Æ
+##ç”¢ç”Ÿå…«å¤§å…¬è‚¡è¡Œåº«è™›æ“¬è®Šæ•¸
 data.mmmm <- data.mmmm %>%
-  mutate(government = ifelse(Name %in% c("»OÆW»È¦æ", "»OÆW¤g¦a»È¦æ", "»OÆW¤¤¤p¥ø·~»È¦æ", "¦X§@ª÷®w°Ó·~»È¦æ",
-                                         "¥üÂ×°ê»Ú°Ó·~»È¦æ", "²Ä¤@°Ó·~»È¦æ", "µØ«n°Ó·~»È¦æ", "¹ü¤Æ°Ó·~»È¦æ"), 1,0))
+  mutate(government = ifelse(Name %in% c("è‡ºç£éŠ€è¡Œ", "è‡ºç£åœŸåœ°éŠ€è¡Œ", "è‡ºç£ä¸­å°ä¼æ¥­éŠ€è¡Œ", "åˆä½œé‡‘åº«å•†æ¥­éŠ€è¡Œ",
+                                         "å…†è±åœ‹éš›å•†æ¥­éŠ€è¡Œ", "ç¬¬ä¸€å•†æ¥­éŠ€è¡Œ", "è¯å—å•†æ¥­éŠ€è¡Œ", "å½°åŒ–å•†æ¥­éŠ€è¡Œ"), 1,0))
 
-##¥ı´ú¸Õ«á¬Ì±¡®É¥N¡A¬G¬Ì±¡µêÀÀÅÜ¼Æ post_COVID19 10905 ¤§«á¬° 1
-##±N¬Ì±¡ÄY­«µo¥Í´Á(109m1-109m5) COVID19 = 1
+##å…ˆæ¸¬è©¦å¾Œç–«æƒ…æ™‚ä»£ï¼Œæ•…ç–«æƒ…è™›æ“¬è®Šæ•¸ post_COVID19 10905 ä¹‹å¾Œç‚º 1
+##å°‡ç–«æƒ…åš´é‡ç™¼ç”ŸæœŸ(109m1-109m5) COVID19 = 1
 
 data.mmmm <- data.mmmm %>%
   mutate(post_COVID19 = ifelse(month %in% c("109m06", "109m07","109m08","109m09","109m10"), 1, 0))
@@ -154,14 +154,14 @@ data.mmmm <- data.mmmm %>%
   mutate(COVID19 = ifelse(month %in% c("109m01", "109m02","109m03","109m04","109m05"), 1, 0))
 
 
-####²£¥Íºô¸ôÁÊª«¡G¥É¤s, µó¤f, ¤@¥d³q 10905 «á¬° 1 ¤§µêÀÀÅÜ¼Æ for «á¬Ì±¡®É¥N¨Ï¥Î
+####ç”¢ç”Ÿç¶²è·¯è³¼ç‰©ï¼šç‰å±±, è¡—å£, ä¸€å¡é€š 10905 å¾Œç‚º 1 ä¹‹è™›æ“¬è®Šæ•¸ for å¾Œç–«æƒ…æ™‚ä»£ä½¿ç”¨
 #data.mmmm <- data.mmmm %>%
   mutate(online_shop = ifelse(post_COVID19 == 1 & 
-                                Name %in% c("¥É¤s°Ó·~»È¦æ", "¤@¥d³q²¼ÃÒªÑ¥÷¦³­­¤½¥q", "µó¤f¹q¤l¤ä¥IªÑ¥÷¦³­­¤½¥q"), 1,0))
+                                Name %in% c("ç‰å±±å•†æ¥­éŠ€è¡Œ", "ä¸€å¡é€šç¥¨è­‰è‚¡ä»½æœ‰é™å…¬å¸", "è¡—å£é›»å­æ”¯ä»˜è‚¡ä»½æœ‰é™å…¬å¸"), 1,0))
 
 View(data.mmmm)
-#µe¹Ï°Ï³á
-##Á`­p¥N¦¬¥Iª÷ÃBÁÍ¶Õ¹Ï
+#ç•«åœ–å€å–”
+##ç¸½è¨ˆä»£æ”¶ä»˜é‡‘é¡è¶¨å‹¢åœ–
 
 data.mmmm %>% 
   group_by(month) %>%
@@ -170,11 +170,11 @@ data.mmmm %>%
   geom_line(group = 1, size = 1, colour = "blue") +
   geom_point(size = 3, colour = "black") +
   geom_text(hjust = 1.5) +
-  xlab("") + ylab("Total_¥N¦¬¥Iª÷ÃB(»õ¤¸)") +
+  xlab("") + ylab("Total_ä»£æ”¶ä»˜é‡‘é¡(å„„å…ƒ)") +
   theme_bw()
 
 
-##¦U®a¾÷ºc¦b¨C­Ó¤ëªº¥N¦¬¥Iª÷ÃB¥«¥e²vÁÍ¶Õ¹Ï(¥¼§¹)
+##å„å®¶æ©Ÿæ§‹åœ¨æ¯å€‹æœˆçš„ä»£æ”¶ä»˜é‡‘é¡å¸‚å ç‡è¶¨å‹¢åœ–(æœªå®Œ)
 data.mmmm %>% 
   ggplot(aes(x = factor(month), y = last_percent_m, 
              label = round(last_percent_m, digits = 2),
@@ -183,38 +183,38 @@ data.mmmm %>%
   facet_wrap(~Name, nrow = 3) +
   theme_bw()
 
-#¿é¥X¸ê®Æªí data.mmmm
+#è¼¸å‡ºè³‡æ–™è¡¨ data.mmmm
 export(data.mmmm, "data.mmmm.xlsx")
 
-##transaction ¤À¥¬ «ØÄ³¨úlog
+##transaction åˆ†å¸ƒ å»ºè­°å–log
 ggplot(data.mmmm, aes(x = ln_transaction, group = Name)) +
   geom_histogram(bins = 30, fill = "#6495ED") 
 
-##last_percent_m ¤À¥¬ «ØÄ³¨úlog ¦ı·|¥X²{¤p¼ÆÂI ln §¹¬°­t ¼È¥B¥Î log(1+n) ªº¤è¦¡
+##last_percent_m åˆ†å¸ƒ å»ºè­°å–log ä½†æœƒå‡ºç¾å°æ•¸é» ln å®Œç‚ºè²  æš«ä¸”ç”¨ log(1+n) çš„æ–¹å¼
 ggplot(data.mmmm, aes(x = ln_last_percent_m, group = Name)) +
   geom_histogram(bins = 30, fill = "#6495ED")
 
-##last_people ¤À¥¬ «ØÄ³¨ú log ¥i¥H¨ú
+##last_people åˆ†å¸ƒ å»ºè­°å– log å¯ä»¥å–
 ggplot(data.mmmm, aes(x = ln_last_people, group = Name)) +
   geom_histogram(bins = 30, fill = "#6495ED")
 
-## growth_user ¤À¥¬ «ØÄ³¨ú log ¦ı¦³­t­È¬G¤£¨ú
+## growth_user åˆ†å¸ƒ å»ºè­°å– log ä½†æœ‰è² å€¼æ•…ä¸å–
 ggplot(data.mmmm, aes(x = growth_user, group = Name)) +
   geom_histogram(bins = 30)
 
 #Panel Data
 
-##¥Í¦¨DiD
+##ç”ŸæˆDiD
 #data.mmmm <- data.mmmm %>%
 #  mutate(did1 = post_COVID19 * online_shop,
 #         did2 = COVID19 * online_shop,
 #         did3 = all_COVID19 * online_shop)
 
 
-##±Ô­z©Ê²Î­p
+##æ•˜è¿°æ€§çµ±è¨ˆ
 summary(data.mmmm)
 
-##¬İ¤@¤U¬ÛÃö©Ê¤ÀªR
+##çœ‹ä¸€ä¸‹ç›¸é—œæ€§åˆ†æ
 correlation <- data.mmmm %>%
   select(ln_last_percent_m, ln_last_people, growth_user, online_users, post_COVID19, COVID19, all_COVID19)
 
@@ -228,19 +228,19 @@ corrplot(rc[[1]], type = "upper", method = "number",
 
 View(data.panel)
 
-####Âà´«ºô¸ôÁÊª«¡G¥É¤s, µó¤f, ¤@¥d³q 10901-10910«á¬° 1 ¤§µêÀÀÅÜ¼Æ for ¾ã­Ó¬Ì±¡¨Ï¥Î
+####è½‰æ›ç¶²è·¯è³¼ç‰©ï¼šç‰å±±, è¡—å£, ä¸€å¡é€š 10901-10910å¾Œç‚º 1 ä¹‹è™›æ“¬è®Šæ•¸ for æ•´å€‹ç–«æƒ…ä½¿ç”¨
 data.mmmm <- data.mmmm %>%
   mutate(all_COVID19 = ifelse(month %in% c("109m01", "109m02", "109m03", "109m04", "109m05",
                                            "109m06", "109m07","109m08","109m09","109m10"), 1, 0)) %>%
-  mutate(online_shop = ifelse(Name %in% c("¥É¤s°Ó·~»È¦æ", "¤@¥d³q²¼ÃÒªÑ¥÷¦³­­¤½¥q", "µó¤f¹q¤l¤ä¥IªÑ¥÷¦³­­¤½¥q"), 1,0))
+  mutate(online_shop = ifelse(Name %in% c("ç‰å±±å•†æ¥­éŠ€è¡Œ", "ä¸€å¡é€šç¥¨è­‰è‚¡ä»½æœ‰é™å…¬å¸", "è¡—å£é›»å­æ”¯ä»˜è‚¡ä»½æœ‰é™å…¬å¸"), 1,0))
 data.panel <- pdata.frame(data.mmmm, index = c("Name", "month"))
 
 
-#options(scipen=999) ## Cancel ±¼¬ì¾Ç²Å¸¹
+#options(scipen=999) ## Cancel æ‰ç§‘å­¸ç¬¦è™Ÿ
 data.mmmm <- data.frame(data.mmmm)
 data.panel <- pdata.frame(data.mmmm, index = c("Name", "month"))
 
-#¤@¯ëPanel Data_a
+#ä¸€èˆ¬Panel Data_a
 re <- plm(formula = ln_transaction ~ ln_last_people + growth_user + post_COVID19 + COVID19 + online_users + ln_last_percent_m + online_shop, 
           data = data.panel,
           model = "random",
@@ -255,10 +255,10 @@ fe <- plm(formula = ln_transaction ~ ln_last_people + growth_user + post_COVID19
 
 summary(fe)
 
-# Hausman test¡G¤£©Úµ´µêµL°²³] ¡÷ ¨Ï¥Î RE¡A¶i¤@¨B°µ LM TEST
+# Hausman testï¼šä¸æ‹’çµ•è™›ç„¡å‡è¨­ â†’ ä½¿ç”¨ REï¼Œé€²ä¸€æ­¥åš LM TEST
 phtest(fe, re)
 
-#LM test¡G­Y©Úµ´µêµL°²³]¡A¨Ï¥Î RE
+#LM testï¼šè‹¥æ‹’çµ•è™›ç„¡å‡è¨­ï¼Œä½¿ç”¨ RE
 pool <- plm(formula = ln_transaction ~ ln_last_people + growth_user + post_COVID19 + COVID19 + online_users + ln_last_percent_m + online_shop , 
             data = data.panel,
             model = "pooling",
@@ -268,7 +268,7 @@ summary(pool)
 plmtest(pool, type=c("bp"))
 
 ##########
-##´ú¸Õ¨ú¤W´Á¥«¥e¤ñ¨úlog«á ´İ®t¤À°tªºÅÜ¤Æ
+##æ¸¬è©¦å–ä¸ŠæœŸå¸‚å æ¯”å–logå¾Œ æ®˜å·®åˆ†é…çš„è®ŠåŒ–
 test_log <- resid(re)
 plot(data.mmmm$ln_last_percent_m, test_log, 
      ylab="Residuals", xlab="Independent Variable", 
@@ -283,7 +283,7 @@ abline(0,0)
 #################
 
 
-#¤@¯ëPanel Data_b
+#ä¸€èˆ¬Panel Data_b
 re <- plm(formula = ln_transaction ~ ln_last_people + growth_user + all_COVID19 + online_users + ln_last_percent_m + online_shop, 
           data = data.panel,
           model = "random",
@@ -298,10 +298,10 @@ fe <- plm(formula = ln_transaction ~ ln_last_people + growth_user + all_COVID19 
 
 summary(fe)
 
-# Hausman test¡G¤£©Úµ´µêµL°²³] ¡÷ ¨Ï¥Î RE¡A¶i¤@¨B°µ LM TEST
+# Hausman testï¼šä¸æ‹’çµ•è™›ç„¡å‡è¨­ â†’ ä½¿ç”¨ REï¼Œé€²ä¸€æ­¥åš LM TEST
 phtest(fe, re)
 
-#LM test¡G­Y©Úµ´µêµL°²³]¡A¨Ï¥Î RE
+#LM testï¼šè‹¥æ‹’çµ•è™›ç„¡å‡è¨­ï¼Œä½¿ç”¨ RE
 pool <- plm(formula = ln_transaction ~ ln_last_people + growth_user + all_COVID19 + online_users + ln_last_percent_m + online_shop, 
             data = data.panel,
             model = "pooling",
@@ -314,7 +314,7 @@ plmtest(pool, type=c("bp"))
 
 
 
-#DiD ®t²§¤¤ªº®t²§_«á¬Ì±¡®É¥N(109m06-109m10)_¦³¶}©ñºô¸ôÁÊª«ªº¦æ°Ê¤ä¥I¬O§_¥i¥H¼W¥[¥N¦¬¥Iª÷ÃB
+#DiD å·®ç•°ä¸­çš„å·®ç•°_å¾Œç–«æƒ…æ™‚ä»£(109m06-109m10)_æœ‰é–‹æ”¾ç¶²è·¯è³¼ç‰©çš„è¡Œå‹•æ”¯ä»˜æ˜¯å¦å¯ä»¥å¢åŠ ä»£æ”¶ä»˜é‡‘é¡
 View(data.panel)
 re_did <- plm(formula = ln_transaction ~ ln_last_people + post_COVID19*online_shop + growth_user + online_users + ln_last_percent_m + COVID19, 
           data = data.panel,
@@ -330,10 +330,10 @@ fe_did <- plm(formula = ln_transaction ~ ln_last_people + post_COVID19*online_sh
 
 summary(fe_did)
 
-# Hausman test¡G¤£©Úµ´µêµL°²³] ¡÷ ¨Ï¥Î RE¡A¶i¤@¨B°µ LM TEST
+# Hausman testï¼šä¸æ‹’çµ•è™›ç„¡å‡è¨­ â†’ ä½¿ç”¨ REï¼Œé€²ä¸€æ­¥åš LM TEST
 phtest(fe_did, re_did)
 
-#LM test¡G©Úµ´µêµL°²³]¡A¨Ï¥Î RE
+#LM testï¼šæ‹’çµ•è™›ç„¡å‡è¨­ï¼Œä½¿ç”¨ RE
 pool_did <- plm(formula = ln_transaction ~ ln_last_people + post_COVID19*online_shop + growth_user + online_users + ln_last_percent_m + COVID19, 
           data = data.panel,
           model = "pooling")
@@ -344,13 +344,13 @@ plmtest(pool_did, type=c("bp"))
 
 
 
-####Âà´«ºô¸ôÁÊª«¡G¥É¤s, µó¤f, ¤@¥d³q 10901-10905«á¬° 1 ¤§µêÀÀÅÜ¼Æ for ¬Ì±¡Ãzµo¨Ï¥Î
+####è½‰æ›ç¶²è·¯è³¼ç‰©ï¼šç‰å±±, è¡—å£, ä¸€å¡é€š 10901-10905å¾Œç‚º 1 ä¹‹è™›æ“¬è®Šæ•¸ for ç–«æƒ…çˆ†ç™¼ä½¿ç”¨
 data.mmmm <- data.mmmm %>%
   mutate(online_shop = ifelse(COVID19 == 1 & 
-                                Name %in% c("¥É¤s°Ó·~»È¦æ", "¤@¥d³q²¼ÃÒªÑ¥÷¦³­­¤½¥q", "µó¤f¹q¤l¤ä¥IªÑ¥÷¦³­­¤½¥q"), 1,0))
+                                Name %in% c("ç‰å±±å•†æ¥­éŠ€è¡Œ", "ä¸€å¡é€šç¥¨è­‰è‚¡ä»½æœ‰é™å…¬å¸", "è¡—å£é›»å­æ”¯ä»˜è‚¡ä»½æœ‰é™å…¬å¸"), 1,0))
 data.panel <- pdata.frame(data.mmmm, index = c("Name", "month"))
 
-####DiD ®t²§¤¤ªº®t²§_¬Ì±¡Ãzµo´Á¶¡(109m01-109m05)_¦³¶}©ñºô¸ôÁÊª«ªº¦æ°Ê¤ä¥I¬O§_¥i¥H¼W¥[¥N¦¬¥Iª÷ÃB
+####DiD å·®ç•°ä¸­çš„å·®ç•°_ç–«æƒ…çˆ†ç™¼æœŸé–“(109m01-109m05)_æœ‰é–‹æ”¾ç¶²è·¯è³¼ç‰©çš„è¡Œå‹•æ”¯ä»˜æ˜¯å¦å¯ä»¥å¢åŠ ä»£æ”¶ä»˜é‡‘é¡
 re_did2 <- plm(formula = ln_transaction ~ ln_last_people + COVID19*online_shop + growth_user + online_users + ln_last_percent_m + post_COVID19, 
               data = data.panel,
               model = "random")
@@ -363,10 +363,10 @@ fe_did2 <- plm(formula = ln_transaction ~ ln_last_people + COVID19*online_shop +
 
 summary(fe_did2)
 
-# Hausman test¡G¤£©Úµ´µêµL°²³] ¡÷ ¨Ï¥Î RE¡A¶i¤@¨B°µ LM TEST
+# Hausman testï¼šä¸æ‹’çµ•è™›ç„¡å‡è¨­ â†’ ä½¿ç”¨ REï¼Œé€²ä¸€æ­¥åš LM TEST
 phtest(fe_did2, re_did2)
 
-#LM test¡G©Úµ´µêµL°²³]¡A¨Ï¥Î RE
+#LM testï¼šæ‹’çµ•è™›ç„¡å‡è¨­ï¼Œä½¿ç”¨ RE
 pool_did2 <- plm(formula = ln_transaction ~ ln_last_people + COVID19*online_shop + growth_user + online_users + ln_last_percent_m + post_COVID19,  
                 data = data.panel,
                 model = "pooling")
@@ -377,7 +377,7 @@ plmtest(pool_did2, type=c("bp"))
 
 
 
-### DiD ®t²§¤¤ªº®t²§_¬Ì±¡´Á¶¡(109m01-109m10)_¦³¶}©ñºô¸ôÁÊª«ªº¦æ°Ê¤ä¥I¬O§_¥i¥H¼W¥[¥N¦¬¥Iª÷ÃB
+### DiD å·®ç•°ä¸­çš„å·®ç•°_ç–«æƒ…æœŸé–“(109m01-109m10)_æœ‰é–‹æ”¾ç¶²è·¯è³¼ç‰©çš„è¡Œå‹•æ”¯ä»˜æ˜¯å¦å¯ä»¥å¢åŠ ä»£æ”¶ä»˜é‡‘é¡
 
 re_did3 <- plm(formula = ln_transaction ~ ln_last_people + all_COVID19*online_shop + growth_user + online_users + ln_last_percent_m , 
                data = data.panel,
@@ -393,10 +393,10 @@ fe_did3 <- plm(formula = ln_transaction ~ ln_last_people + all_COVID19*online_sh
 
 summary(fe_did3)
 
-# Hausman test¡G¤£©Úµ´µêµL°²³] ¡÷ ¨Ï¥Î RE¡A¶i¤@¨B°µ LM TEST
+# Hausman testï¼šä¸æ‹’çµ•è™›ç„¡å‡è¨­ â†’ ä½¿ç”¨ REï¼Œé€²ä¸€æ­¥åš LM TEST
 phtest(fe_did3, re_did3)
 
-#LM test¡G©Úµ´µêµL°²³]¡A¨Ï¥Î RE
+#LM testï¼šæ‹’çµ•è™›ç„¡å‡è¨­ï¼Œä½¿ç”¨ RE
 pool_did3 <- plm(formula = ln_transaction ~ ln_last_people + all_COVID19*online_shop + growth_user + online_users + ln_last_percent_m,  
                  data = data.panel,
                  model = "pooling")
